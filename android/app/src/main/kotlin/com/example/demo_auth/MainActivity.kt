@@ -1,4 +1,4 @@
-package com.example.senden
+package com.example.demo_auth
 
 import io.flutter.embedding.android.FlutterActivity
 

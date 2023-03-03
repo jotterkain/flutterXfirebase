@@ -1,6 +1,6 @@
 {
-    "name": "senden",
-    "short_name": "senden",
+    "name": "demo_auth",
+    "short_name": "demo_auth",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
