@@ -1,3 +1,4 @@
+import 'package:demo_auth/ui/theme/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import '../../../utils/routes/routes.dart';
@@ -20,6 +21,7 @@ class FlutterXFirebase extends StatelessWidget {
     return MaterialApp.router(
       title: "FlutterXFirebase",
       debugShowCheckedModeBanner: false,
+      theme: AppTheme.light,
       routeInformationParser: AppRouter.router.routeInformationParser,
       routerDelegate: AppRouter.router.routerDelegate,
     );
