@@ -1,9 +1,14 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import '../../../utils/routes/routes.dart' as routes_const;
+import '../../../utils/routes/routes.dart';
+import 'firebase_options.dart';
 
 
-void main(){
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const FlutterXFirebase());
 }
 
@@ -14,9 +19,9 @@ class FlutterXFirebase extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: "FlutterXFirebase",
-      routerConfig: GoRouter(
-        routes: routes_const.routes
-      ),
+      debugShowCheckedModeBanner: false,
+      routeInformationParser: AppRouter.router.routeInformationParser,
+      routerDelegate: AppRouter.router.routerDelegate,
     );
   }
 }
