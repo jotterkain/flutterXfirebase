@@ -28,7 +28,7 @@ Here is how to use it.
 
 4. **Make sure to add google and firebase dependencies for android**: <br/><br/>
 
-   1. file: `<flutter_project>/android/build.gradle`
+   1. file: `<flutter_project>/android/build.gradle`<br/><br/>
    
    ```gradle
     buildscript {
@@ -54,7 +54,7 @@ Here is how to use it.
     }
     ```
    
-   2. file: `<flutter_project>/android/app/build.gradle`
+   2. file: `<flutter_project>/android/app/build.gradle`<br/><br/>
       
    ```gradle
     plugins {
