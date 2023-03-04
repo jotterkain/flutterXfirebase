@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../helpers.dart' as helpers;
 
 Widget header(BuildContext context) {
   return Column(
@@ -30,14 +31,13 @@ Widget header(BuildContext context) {
         ),
       ),
       Padding(
-        padding:
-        EdgeInsets.only(right: MediaQuery.of(context).size.width / 7),
+        padding: EdgeInsets.only(right: MediaQuery.of(context).size.width / 7),
         child: RichText(
           text: TextSpan(
             children: [
               TextSpan(
                 text:
-                "Please, fill in the required information or read more about ",
+                    "Please, fill in the required information or read more about ",
                 style: GoogleFonts.alata(
                   fontWeight: FontWeight.bold,
                   fontSize: 15,
@@ -56,6 +56,51 @@ Widget header(BuildContext context) {
           ),
         ),
       ),
+    ],
+  );
+}
+
+Widget footer(BuildContext context, int index, PageController pageController) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      if (index != 2)
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            index != 0
+                ? MaterialButton(
+                    color: Colors.black,
+                    onPressed: index == 3 || index == 4
+                        ? null
+                        : () {
+                            helpers.backButtonCase(index, pageController);
+                          },
+                    child: const Text(
+                      "Back",
+                    ),
+                  )
+                : TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Already have account",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context).colorScheme.secondary,
+                      ),
+                    ),
+                  ),
+            MaterialButton(
+              color: Colors.black,
+              onPressed: () {
+                helpers.nextButtonCase(index, pageController);
+              },
+              child: const Text(
+                "Next",
+              ),
+            ),
+          ],
+        )
     ],
   );
 }

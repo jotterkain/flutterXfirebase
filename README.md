@@ -19,13 +19,13 @@ Here is how to use it.
 
 ### Requirements:
 
-1. In the `<flutter_project>/android` folder, run `./gradlew sigingReport`, copy the `SHA1` and `SHA-256` key printed, you must add them to your firebase project in order to use some services like `phone number authentication`
+1. In the `<flutter_project>/android` folder, run `./gradlew sigingReport`, copy the `SHA1` and `SHA-256` keys printed, you must add them to your firebase project in order to use some Firebase services like [phone number authentication](https://firebase.google.com/docs/auth/flutter/phone-auth?hl=fr#:~:text=Phone%20authentication%20allows%20users%20to,able%20to%20sign%20into%20Firebase.)
 
 
-2. **Create a new Firebase project**: ([How to](https://cloud.google.com/firestore/docs/client/get-firebase?hl=fr)) remember to add the keys
+2. **Create a new Firebase project**: ([Guide](https://cloud.google.com/firestore/docs/client/get-firebase?hl=fr)) remember to add the keys
 
 
-3. Copy and paste the downloaded `google-services.json` file (from step 1) in `<flutter_project>/android/app`
+3. Copy and paste the downloaded `google-services.json` file (from step 2) in `<flutter_project>/android/app`
 
 
 4. **Firebase CLI**: Follow this [link](https://firebase.google.com/docs/cli?hl=fr#mac-linux-npm) if you don't know how to
@@ -35,14 +35,9 @@ Here is how to use it.
 5. **run `dart pub global activate flutterfire_cli`**  in order to install and activate the Flutterfire CLI
 
 
-6. **To configure your Firebase X Flutter project**, move inside your Flutter project and <br/>
+6. **To configure your Firebase X Flutter project**, move inside your Flutter project and run <br/>
    `flutterfire configure` (
    learn [more](https://firebase.google.com/docs/flutter/setup?hl=fr&platform=ios#configure-firebase))
 
 
 7. And that's all you need to use Firebase as your backend authentication service...
-
-## - Flutter App setup
-
-### Required flutter dependencies
-- go_router

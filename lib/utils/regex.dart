@@ -5,6 +5,7 @@ bool isValidEmail(String email) {
 }
 
 bool isValidPassword(String password) {
+  //todo: improve regex
   return RegExp(
           r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$+!%?])[A-Za-z\d@#+$!%?]{8,}$')
       .hasMatch(password);
