@@ -19,26 +19,26 @@ List<RouteBase> routes = [
       // whatever the routes an user is following if he is not logged in, he's redirected
       if (auth.currentUser == null) {
         return state.namedLocation(RouteNames.signup);
+      } else {
+        if (auth.currentUser?.phoneNumber == null) {
+          auth.currentUser?.delete();
+          return state.namedLocation(RouteNames.signup);
+        }
       }
       return null;
     },
     routes: [
-      ShellRoute(
-        builder: (context, state, child) => Scaffold(resizeToAvoidBottomInset: false,body: child),
-        routes: [
-          GoRoute(
-            path: 'login',
-            name: RouteNames.login,
-            pageBuilder: (context, state) =>
-                const MaterialPage(child: LoginScreen()),
-          ),
-          GoRoute(
-            path: 'signup',
-            name: RouteNames.signup,
-            pageBuilder: (context, state) =>
-                const MaterialPage(child: SignupScreen()),
-          ),
-        ],
+      GoRoute(
+        path: 'login',
+        name: RouteNames.login,
+        pageBuilder: (context, state) =>
+            const MaterialPage(child: LoginScreen()),
+      ),
+      GoRoute(
+        path: 'signup',
+        name: RouteNames.signup,
+        pageBuilder: (context, state) =>
+            const MaterialPage(child: SignupScreen()),
       ),
     ],
   ),

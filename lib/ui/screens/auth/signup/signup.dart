@@ -6,6 +6,8 @@ import 'package:demo_auth/ui/screens/auth/signup/components/page_views/wait_emai
 import 'package:flutter/material.dart';
 import 'components/no_build.dart' as components;
 
+final processing = ValueNotifier<bool>(false); // for synchronous operation
+
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
 
@@ -31,32 +33,45 @@ class _SignupScreenState extends State<SignupScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 15.0, left: 10.0, right: 10.0),
-      child: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            components.header(context),
-            const SizedBox(height: 30),
-            Flexible(
-              flex: 3,
-              child: PageView(
-                physics: const NeverScrollableScrollPhysics(),
-                scrollDirection: Axis.horizontal,
-                controller: _pageController,
-                children: const [
-                  NameBirthView(), // 0
-                  EmailPageView(), // 1
-                  WaitEmailConfirmationPageView(), // 2
-                  PhonePageView(), // 3
-                  OTPVerification(), // 4
-                ],
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: Padding(
+        padding: const EdgeInsets.only(bottom: 15.0, left: 10.0, right: 10.0),
+        child: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              components.header(context),
+              const SizedBox(height: 30),
+              Flexible(
+                flex: 3,
+                child: PageView(
+                  physics: const NeverScrollableScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  controller: _pageController,
+                  children: const [
+                    NameBirthView(), // 0
+                    EmailPageView(), // 1
+                    WaitEmailConfirmationPageView(), // 2
+                    PhonePageView(), // 3
+                    OTPVerification(), // 4
+                  ],
+                ),
               ),
-            ),
-            const Spacer(),
-            components.footer(context, currentIndex, _pageController),
-          ],
+              const Spacer(),
+              ValueListenableBuilder(
+                valueListenable: processing,
+                builder: (context, value, child) {
+                  return components.footer(
+                    context,
+                    currentIndex,
+                    _pageController,
+                    value,
+                  );
+                },
+              )
+            ],
+          ),
         ),
       ),
     );

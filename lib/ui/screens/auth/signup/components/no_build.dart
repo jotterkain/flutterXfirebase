@@ -60,7 +60,8 @@ Widget header(BuildContext context) {
   );
 }
 
-Widget footer(BuildContext context, int index, PageController pageController) {
+Widget footer(BuildContext context, int index, PageController pageController,
+    bool processing) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -93,11 +94,19 @@ Widget footer(BuildContext context, int index, PageController pageController) {
             MaterialButton(
               color: Colors.black,
               onPressed: () {
-                helpers.nextButtonCase(index, pageController);
+                helpers.nextButtonCase(index, pageController, context);
               },
-              child: const Text(
-                "Next",
-              ),
+              child: processing
+                  ? SizedBox(
+                      height: 14,
+                      width: 14,
+                      child: CircularProgressIndicator(
+                        color: Theme.of(context).colorScheme.onPrimary,
+                      ),
+                    )
+                  : Text(
+                      index == 3 ? "Verify" : "Next",
+                    ),
             ),
           ],
         )
